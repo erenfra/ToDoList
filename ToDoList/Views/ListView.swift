@@ -9,11 +9,18 @@ import SwiftUI
 
 struct ListView: View {
 
-  @State var items: [ItemModel] = []
+  @State var items: [ItemModel] = [
+    ItemModel(title: "This is the first title", isCompleted: false),
+    ItemModel(title: "This is the second title", isCompleted: true),
+    ItemModel(title: "This is the third title", isCompleted: false)
+  ]
 
   var body: some View {
     List {
-      //ListRowView(title: "This is the first title")
+      ForEach(items) { item in
+        ListRowView(item: item)
+      }
+
     }
     .listStyle(.plain)
     .listRowSeparator(.hidden)
